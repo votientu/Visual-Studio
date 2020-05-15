@@ -1,6 +1,5 @@
-// Ex7_03.cpp : This file contains the 'main' function. Program execution begins and ends there.
-// Calculating the volume of a box with a member function
-// Using a constructor
+// Ex7_07.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// A class with private members
 
 #include <iostream>
 
@@ -10,17 +9,11 @@ using std::endl;
 class CBox					// Class definition at global scope
 {
 public:
-	double m_Length {1.0};	// Length of a box in inches
-	double m_Width {1.0};	// Width of a box in inches
-	double m_Height{ 1.0 };	// Height of a box in inches
-
 	// Constructor definition
-	CBox(double lv, double wv, double hv)
+	explicit CBox(double lv = 1.0, double wv = 1.0, double hv = 1.0):
+		m_Length {lv}, m_Width {wv}, m_Height {hv}
 	{
 		cout << "Constructor called." << endl;
-		m_Length = lv;		// Set values of data members
-		m_Width = wv;
-		m_Height = hv;
 	}
 
 	// Function to calculate the volume of a box
@@ -28,16 +21,22 @@ public:
 	{
 		return m_Length*m_Width*m_Height;
 	}
+
+private:
+	double m_Length;		// Length of a box in inches
+	double m_Width;			// Width of a box in inches
+	double m_Height;		// Height of a box in inches
+
 };
 
 int main()
 {
-	CBox box1 {78.0, 24.0, 18.0}, cigarBox {8.0, 5.0, 1.0};
+	CBox match {2.2, 1.1, 0.5};		// Declare match box
+	CBox box2;						// Declare box2 - no initial values
+	
+	cout << "Volume of match = " << match.volume() << endl;
 
-	cout << "Volume of box1 = " << box1.volume() << endl;
-	cout << "Volume of cigarBox = " << cigarBox.volume() << endl;
-	cout << "A CBox object occupies "
-		<< sizeof box1 << " bytes." << endl;
+	cout << "Volume of box2 = " << box2.volume() << endl;
 
 	return 0;
 }
