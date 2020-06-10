@@ -1,7 +1,7 @@
 #pragma once
 #include "Box.h"
 #include <cstring>				// For strlen() and strcpy_s()
- class CCandyBox : CBox
+ class CCandyBox : public CBox
 {
 public:
 	 char* m_Contents;
