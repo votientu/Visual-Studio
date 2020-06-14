@@ -1,23 +1,16 @@
 #// Ex9_01.cpp : This file contains the 'main' function. Program execution begins and ends there.
-// Using a function inherited from a base class
+// Using the protected access specifier
 
 #include <iostream>			// For stream I/O
 #include "CandyBox.h"		// For CBox and CCandyBox
 
 int main()
 {
-    CBox myBox {4.0, 3.0, 2.0};		// Create CBox and CCandyBox object 
-	CCandyBox myCandyBox;			
-	CCandyBox myMintBox{ "Wafer Thin Mints" };
-
-	std::cout << "myBox occupies " << sizeof myBox		// Show how much memory
-		<< " bytes" << std::endl
-		<< "myCandyBox occupies " << sizeof myCandyBox
-		<< " bytes" << std::endl
-		<< "myMintBox occupies " << sizeof myMintBox
-		<< " bytes" << std::endl;
-	std::cout << "mymintBox volume is " << myMintBox.volume()	// Get volume of a CCandyBox object
-		<< std::endl;
+	CCandyBox chocBox{ 2.0, 3.0, 4.0, "Chockies" };		// Declare and initialize
+	CCandyBox chocolateBox{ chocBox };					// For CBox and CCandyBox
+	
+	std::cout << "Volume of chocBox is " << chocBox.volume() << std::endl
+		<< "Volume of chocolateBox is " << chocolateBox.volume() << std::endl;
 
 	return 0;
 }
