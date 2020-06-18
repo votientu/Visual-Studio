@@ -1,16 +1,18 @@
 #pragma once
 #include <iostream>
-class CBox
+#include "Container.h"
+
+class CBox : public CContainer
 {
 public:
 	// Function to show the volume of an object
-	void showVolume() const
+	virtual void showVolume() const
 	{
 		std::cout << "CBox usable volume is " << volume() << std::endl;
 	}
 
 	// Function to calculate the volume of a CBox object
-	double volume() const
+	virtual double volume() const
 	{
 		return m_Length * m_Width * m_Height;
 	}
@@ -18,6 +20,11 @@ public:
 	// Constructor 
 	explicit CBox(double lv = 1.0, double wv = 1.0, double hv = 1.0)
 		: m_Length {lv}, m_Width {wv}, m_Height {hv} {}
+
+	~CBox()
+	{
+		std::cout << "CBox destructor called" << std::endl;
+	}
 
 protected:
 	double m_Length;

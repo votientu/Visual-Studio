@@ -151,12 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Box.cpp" />
     <ClCompile Include="Ex9_06.cpp" />
-    <ClCompile Include="GlassBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
+    <ClInclude Include="Can.h" />
+    <ClInclude Include="Container.h" />
     <ClInclude Include="GlassBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,17 +1,36 @@
 // Ex9_06.cpp : This file contains the 'main' function. Program execution begins and ends there.
-// Behavior of inherited functions in a derived class
+// Using an abstract class 
 #include <iostream>
+#include "Box.h"
+#include "Can.h"
 #include "GlassBox.h"
 
 int main()
 {
-	CBox myBox{ 2.0, 3.0, 4.0 };			// Define a base box
-	CGlassBox myGlassBox{ 2.0, 3.0, 4.0 };	// Define derived box - same size
+	// Pointer to abstract base class initialized with CBox object address
+	CContainer* pC1{ new CBox {2.0, 3.0, 4.0} };
+	CCan myCan{ 6.5, 3.0 };
+	CGlassBox myGlassBox{ 2.0, 3.0, 4.0 };
+	pC1->showVolume();				// Output the volume of CBox
+	std::cout << "Delete CBox" << std::endl;
+	delete pC1;
 
-	myBox.showVolume();						// Display volume of base box
-	std::cout << myGlassBox.volume();				// Display volume of derived box
-	
+	pC1 = new CGlassBox{ 4.0, 5.0, 6.0 };	// Create CGlassBox dynamically
+	pC1->showVolume();
+	std::cout << "Delete CGlassBox" << std::endl;
+	delete pC1;
+
+	pC1 = &myCan;					// Put myCan address in pointer
+	pC1->showVolume();				// Output the volume of CCan
+	pC1 = &myGlassBox;				// Put myGlassBox address in pointer
+	pC1->showVolume();				// Output the volume of CGlassBox
+
 	return 0;
+}
+
+void output(const CBox& aBox)
+{
+	aBox.showVolume();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
